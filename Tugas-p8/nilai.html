@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Penilaian Siswa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .hasil {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hasil Penilaian Siswa</h1>
+  <div id="output" class="hasil"></div>
+
+  <script>
+    // Fungsi (Logika Fungsi)
+    function cekStatusSiswa(nama, nilai) {
+      // Logika Kondisional
+      if (nilai >= 90) {
+        return `${nama} mendapat nilai A (Lulus dengan sangat baik)`;
+      } else if (nilai >= 75) {
+        return `${nama} mendapat nilai B (Lulus dengan baik)`;
+      } else if (nilai >= 60) {
+        return `${nama} mendapat nilai C (Lulus)`;
+      } else {
+        return `${nama} mendapat nilai D (Tidak Lulus)`;
+      }
+    }
+
+    // Array data siswa
+    const daftarSiswa = [
+      { nama: "Ali", nilai: 92 },
+      { nama: "Budi", nilai: 81 },
+      { nama: "Citra", nilai: 65 },
+      { nama: "Dina", nilai: 50 },
+    ];
+
+    // Logika Looping dan Operasional
+    let outputText = "";
+    let totalNilai = 0;
+
+    for (let i = 0; i < daftarSiswa.length; i++) {
+      const hasil = cekStatusSiswa(daftarSiswa[i].nama, daftarSiswa[i].nilai);
+      outputText += `<p>${hasil}</p>`;
+      totalNilai += daftarSiswa[i].nilai; // Operasional: penjumlahan
+    }
+
+    const rataRata = totalNilai / daftarSiswa.length;
+    outputText += `<p><strong>Rata-rata nilai siswa adalah: ${rataRata.toFixed(2)}</strong></p>`;
+
+    // Tampilkan hasil di browser
+    document.getElementById("output").innerHTML = outputText;
+  </script>
+</body>
+</html>
